@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>하늘의 뿌리 · 독서토론 기록</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --paper:#E8E7DD;
+    --paper-2:#F3F2EB;
+    --ink:#20302D;
+    --ink-soft:#4C5A56;
+    --gold:#A96E1F;
+    --gold-deep:#8A570F;
+    --sage:#5E6D5A;
+    --dusk-1:#15222E;
+    --dusk-2:#2E4A63;
+    --horizon:#CB8B3E;
+    --line:rgba(32,48,45,0.15);
+    --line-soft:rgba(32,48,45,0.08);
+    --serif-la:"Fraunces",Georgia,serif;
+    --serif-kr:"Gowun Batang","Noto Serif KR",serif;
+    --body:"Pretendard","Noto Sans KR",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-weight:400;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg,#12202C 0%,#1B2E3F 34%,#345470 62%,#7C6B4A 82%,#C88A3E 100%);
+    color:#F3EFE4;
+    overflow:hidden;
+    padding:clamp(3rem,7vw,6rem) 1.5rem 0;
+  }
+  .hero__stars{position:absolute;inset:0;pointer-events:none;opacity:.7;}
+  .hero__inner{
+    position:relative;
+    max-width:1000px;
+    margin:0 auto;
+    z-index:2;
+  }
+  .hero__eyebrow{
+    font-family:var(--serif-la);
+    font-style:italic;
+    font-weight:400;
+    letter-spacing:.02em;
+    font-size:clamp(1rem,2.4vw,1.35rem);
+    color:#E9D9BD;
+  }
+  .hero__title{
+    font-family:var(--serif-kr);
+    font-weight:700;
+    font-size:clamp(3.2rem,13vw,8rem);
+    line-height:.98;
+    letter-spacing:-.01em;
+    margin:.35em 0 .1em;
+    text-shadow:0 2px 30px rgba(0,0,0,.25);
+  }
+  .hero__fr{
+    font-family:var(--serif-la);
+    font-style:italic;
+    font-weight:300;
+    font-size:clamp(1.1rem,3.4vw,1.9rem);
+    color:#EAD9BB;
+    letter-spacing:.01em;
+  }
+  .hero__meta{
+    margin-top:clamp(1.4rem,3vw,2.2rem);
+    display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;
+    font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+    color:#D8CBB0;font-weight:500;
+  }
+  .hero__meta span{white-space:nowrap;}
+  .hero__lede{
+    max-width:40ch;
+    margin-top:clamp(1.6rem,3vw,2.2rem);
+    font-family:var(--serif-kr);
+    font-size:clamp(1.05rem,2.5vw,1.3rem);
+    line-height:1.75;
+    color:#F1E7D4;
+  }
+  .hero__scape{display:block;width:100%;height:auto;margin-top:1.5rem;position:relative;z-index:2;}
+
+  /* ---------- LAYOUT ---------- */
+  .wrap{max-width:720px;margin:0 auto;padding:0 1.5rem;}
+  .zine{padding:clamp(3rem,7vw,5.5rem) 0 4rem;}
+
+  /* intro standfirst */
+  .standfirst{
+    max-width:760px;margin:0 auto;padding:0 1.5rem;
+    font-family:var(--serif-kr);
+    font-size:clamp(1.15rem,2.7vw,1.45rem);
+    line-height:1.9;color:var(--ink);
+  }
+  .standfirst .drop{
+    float:left;font-family:var(--serif-la);font-weight:500;
+    font-size:4.6rem;line-height:.78;padding:.06em .12em 0 0;color:var(--gold);
+  }
+  .standfirst p+p{margin-top:1.1rem;}
+
+  /* section */
+  .sec{padding-top:clamp(3rem,6vw,4.5rem);}
+  .sec__head{max-width:720px;margin:0 auto 1.7rem;padding:0 1.5rem;}
+  .kicker{
+    display:flex;align-items:baseline;gap:.7rem;
+    font-family:var(--serif-la);font-style:italic;color:var(--gold);
+    font-size:1.05rem;margin-bottom:.55rem;
+  }
+  .kicker b{
+    font-style:normal;font-weight:600;font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--sage);
+    border:1px solid var(--line);border-radius:2em;padding:.2em .8em;
+  }
+  .sec__title{
+    font-family:var(--serif-kr);font-weight:700;
+    font-size:clamp(1.7rem,4.6vw,2.5rem);line-height:1.2;letter-spacing:-.01em;
+  }
+  .sec__title .accent{color:var(--gold-deep);}
+
+  .prose p{margin:0 0 1.15rem;font-size:1.06rem;}
+  .prose p:last-child{margin-bottom:0;}
+  .prose em{font-style:normal;font-weight:600;color:var(--gold-deep);
+    background:linear-gradient(180deg,transparent 62%,rgba(169,110,31,.16) 0);}
+  .subhead{
+    font-family:var(--serif-kr);font-weight:700;font-size:1.18rem;
+    margin:2.1rem 0 .8rem;color:var(--ink);
+    padding-left:.75rem;border-left:3px solid var(--gold);
+  }
+
+  /* voice quote (discussion members' own words) */
+  .voice{
+    margin:1.5rem 0;padding:.2rem 0 .2rem 1.4rem;
+    border-left:2px solid var(--sage);
+    font-family:var(--serif-kr);font-size:1.16rem;line-height:1.72;color:#2a3a36;
+  }
+  .voice .q{color:var(--gold);font-family:var(--serif-la);}
+
+  /* highlighted book line */
+  figure.mark{
+    margin:2rem 0;padding:1.5rem 1.6rem;background:var(--paper-2);
+    border:1px solid var(--line-soft);border-radius:3px;position:relative;
+  }
+  figure.mark::before{
+    content:"밑줄";position:absolute;top:-.72rem;left:1.3rem;
+    background:var(--gold);color:#fff;font-size:.66rem;letter-spacing:.2em;
+    font-weight:600;padding:.28em .8em;border-radius:2em;
+  }
+  figure.mark blockquote{
+    font-family:var(--serif-kr);font-size:1.22rem;line-height:1.72;color:var(--ink);
+  }
+  figure.mark figcaption{
+    margin-top:.7rem;font-size:.82rem;color:var(--ink-soft);letter-spacing:.02em;
+  }
+
+  /* pull statement — big thematic line */
+  .pull{
+    max-width:900px;margin:clamp(2.5rem,6vw,4rem) auto;padding:0 1.5rem;text-align:center;
+  }
+  .pull p{
+    font-family:var(--serif-kr);font-weight:700;
+    font-size:clamp(1.5rem,4.6vw,2.35rem);line-height:1.4;color:var(--ink);
+    letter-spacing:-.01em;
+  }
+  .pull .em{color:var(--gold-deep);}
+
+  /* divider silhouette */
+  .rule{max-width:720px;margin:clamp(2.6rem,6vw,4rem) auto 0;padding:0 1.5rem;}
+  .rule svg{display:block;width:100%;height:auto;opacity:.55;}
+
+  /* two-up note cards */
+  .cards{max-width:720px;margin:1.6rem auto 0;padding:0 1.5rem;display:grid;gap:1rem;}
+  @media(min-width:620px){.cards{grid-template-columns:1fr 1fr;}}
+  .card{
+    background:var(--paper-2);border:1px solid var(--line-soft);border-radius:4px;
+    padding:1.2rem 1.3rem;
+  }
+  .card h4{font-family:var(--serif-kr);font-size:1.05rem;color:var(--gold-deep);margin-bottom:.4rem;}
+  .card p{font-size:.98rem;line-height:1.72;}
+
+  /* closing / ratings */
+  .close{
+    background:var(--dusk-1);color:#EFE6D5;margin-top:clamp(3.5rem,7vw,5.5rem);
+    padding:clamp(3rem,7vw,5rem) 1.5rem;
+  }
+  .close__inner{max-width:720px;margin:0 auto;}
+  .close .kicker{color:var(--horizon);}
+  .close .kicker b{color:#C7B48E;border-color:rgba(255,255,255,.22);}
+  .close h2{font-family:var(--serif-kr);font-weight:700;font-size:clamp(1.7rem,4.6vw,2.4rem);line-height:1.25;margin-bottom:1.4rem;}
+  .close p{font-size:1.05rem;line-height:1.85;color:#E4DAC7;margin-bottom:1.1rem;}
+  .close .voice{border-left-color:var(--horizon);color:#F3ECDD;}
+  .rating{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:1rem;
+    margin:1.8rem 0 .4rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.16);
+  }
+  .rating .score{font-family:var(--serif-la);font-weight:500;font-size:3.2rem;color:var(--horizon);line-height:1;}
+  .rating .of{font-size:.95rem;color:#C7B48E;letter-spacing:.04em;}
+  .colophon{
+    max-width:720px;margin:0 auto;padding:2.2rem 1.5rem 3rem;text-align:center;
+    font-size:.82rem;letter-spacing:.06em;color:var(--ink-soft);
+  }
+  .colophon a{color:var(--gold-deep);}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <svg class="hero__stars" viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="#F3EFE4">
+      <circle cx="120" cy="40" r="1.1" opacity=".8"/><circle cx="260" cy="70" r="1.4" opacity=".6"/>
+      <circle cx="420" cy="34" r="1" opacity=".7"/><circle cx="600" cy="60" r="1.3" opacity=".5"/>
+      <circle cx="760" cy="42" r="1.1" opacity=".7"/><circle cx="880" cy="80" r="1.2" opacity=".5"/>
+      <circle cx="180" cy="120" r="1" opacity=".4"/><circle cx="520" cy="110" r="1.1" opacity=".45"/>
+      <circle cx="700" cy="130" r="1" opacity=".4"/><circle cx="940" cy="30" r="1" opacity=".6"/>
+      <circle cx="60" cy="90" r="1" opacity=".5"/><circle cx="350" cy="150" r=".9" opacity=".35"/>
+    </g>
+  </svg>
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Reading Circle · No.</p>
+    <h1 class="hero__title">하늘의 뿌리</h1>
+    <p class="hero__fr">Les racines du ciel — Romain Gary, 1956</p>
+    <div class="hero__meta">
+      <span>독서토론 기록</span><span>다섯 사람의 목소리</span><span>완독기 · 해석 · 논쟁</span>
+    </div>
+    <p class="hero__lede">한 장 한 장이 버거웠던 책. 그러나 마지막 장을 덮고 우리는 오래 떠들었다. 그날의 대화를 주제별로 옮긴다.</p>
+  </div>
+  <!-- horizon silhouette -->
+  <svg class="hero__scape" viewBox="0 0 1000 150" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,150 L0,118 C120,110 210,116 300,120 C360,84 372,84 388,120 C470,118 540,112 620,118 C700,110 760,116 1000,108 L1000,150 Z" fill="#0F1A16"/>
+    <!-- elephant -->
+    <g fill="#0F1A16" transform="translate(300,66)">
+      <path d="M0,54 C-4,34 8,20 30,18 C42,10 66,10 78,18 C100,20 112,32 110,52 L104,54 L102,40 C100,50 96,52 90,54 L86,40 C84,52 80,54 74,54 L74,40 L70,54 L40,54 L40,40 L36,54 L22,54 L20,42 C16,50 8,52 4,54 Z M110,30 C120,28 124,36 118,44 C116,40 112,38 108,40 Z"/>
+    </g>
+    <!-- bird flock -->
+    <g fill="#0F1A16" opacity=".85">
+      <path d="M690,44 q6,-6 12,0 q6,-6 12,0" fill="none" stroke="#0F1A16" stroke-width="2.4"/>
+      <path d="M726,54 q5,-5 10,0 q5,-5 10,0" fill="none" stroke="#0F1A16" stroke-width="2.2"/>
+      <path d="M760,40 q5,-5 10,0 q5,-5 10,0" fill="none" stroke="#0F1A16" stroke-width="2.2"/>
+      <path d="M800,58 q4,-4 8,0 q4,-4 8,0" fill="none" stroke="#0F1A16" stroke-width="2"/>
+      <path d="M832,48 q4,-4 8,0 q4,-4 8,0" fill="none" stroke="#0F1A16" stroke-width="2"/>
+    </g>
+  </svg>
+</header>
+
+<!-- ===================== STANDFIRST ===================== -->
+<section class="standfirst reveal">
+  <p><span class="drop">『</span>하늘의 뿌리』는 2차 세계대전을 통과한 프랑스 작가 로맹 가리가 1956년에 내놓은 소설이다. 무대는 식민지 시기의 아프리카 차드. 코끼리를 지키려는 한 남자 모렐과, 그를 둘러싼 온갖 인간 군상이 광활한 사막의 하늘 아래 부딪친다. 콩쿠르상을 안긴 작품이지만, 우리 모두에게 그것은 무엇보다 “끝까지 읽어내기가 쉽지 않았던 책”이었다.</p>
+  <p>그럼에도 마지막 장을 덮은 다섯 사람은 자리를 뜨지 못하고 한참을 이야기했다. 읽기의 고통에서 자연의 아름다움으로, 코끼리와 존엄성으로, 그리고 “남는 게 없는 것 같은데 왜 우리는 이렇게 오래 떠들 수 있을까”라는 질문으로. 그날의 대화를 주제별로 정리한다.</p>
+</section>
+
+<!-- ===================== SECTION 1 ===================== -->
+<article class="sec reveal">
+  <div class="sec__head">
+    <p class="kicker"><b>Part 01</b> <span>완독기</span></p>
+    <h2 class="sec__title">“한 장 한 장이 <span class="accent">힘들었다</span>” — 완독까지의 사투</h2>
+  </div>
+  <div class="wrap prose">
+    <p>시작은 하나같이 고통이었다. 누군가는 “책이 시간을 갉아먹고 있다, 이걸 계속 읽어야 하나 말아야 하나 고민한 거의 첫 번째 책”이라 했고, 또 누군가는 여태 독서토론에서 읽은 책 가운데 <em>압도적으로 어려웠다</em>고 못 박았다. “소설이니까 60페이지쯤 가면 속도가 붙겠지” 했던 기대는 번번이 배신당했다. 300페이지까지 읽다 한 번 포기했던 사람도 있었다.</p>
+
+    <p class="voice"><span class="q">“</span>읽다가 누가 한 얘기가 나오면, 이게 대체 누가 한 말인지를 계속 되짚느라 앞으로 돌아가 다시 읽고… 그러다 보니 시간이 정말 오래 걸렸어요.<span class="q">”</span></p>
+
+    <p>가장 큰 걸림돌은 시점이었다. 2인칭으로 시작했다가 전지적 화자로, 다시 3인칭으로 오갔다. 챕터가 바뀔 때마다 <em>다시 새 스테이지에 들어서는 듯한</em> 피로가 쌓였다. 보통 소설은 초반만 넘기면 속도가 붙는데, 이 책은 그 “붙는 지점”이 좀처럼 오지 않았다.</p>
+
+    <p class="voice"><span class="q">“</span>다 읽고 나서도, 사실은 이 책이 무슨 얘기를 하려는 건지 잘 모르겠더라고요.<span class="q">”</span></p>
+
+    <div class="subhead">구원자는 ‘인물 정리표’였다</div>
+    <p>모두를 구한 건 등장인물 정리였다. 검색해서 인물을 정리하고 나서야 비로소 문장이 읽히기 시작했다는 고백이 이어졌다. 한 멤버가 미리 만들어 공유한 인물 요약표를 두고 “책 읽는 내내 화면에 띄워 놓았다”는 사람이 여럿이었다. AI로 만든 캐릭터 요약이라 딱 들어맞지 않는 대목도 있었고, 요약에 빠진 인물은 각자 찾아서 채워 넣기도 했다. 한 사람은 인물이 처음 등장한 페이지 번호까지 적어 두는 자기만의 방법을 썼다.</p>
+
+    <p class="voice"><span class="q">“</span>인물 정리해 놓은 걸 보다가도 ‘어, 얘는 이게 아닌데’ 싶은 게 있었어요. 그래서 알았죠. 아, 얘들(앞서 읽은 사람들)도 어렵게 읽었구나.<span class="q">”</span></p>
+
+    <div class="subhead">새벽의 각성제, 그리고 최초의 완독</div>
+    <p>후반부로 갈수록 반전이 일어났다. 한 사람은 “새벽에 책을 보는데 잠이 오기는커녕 점점 눈이 맑아지더라, 수면제인 줄 알았는데 각성제였다”고 했다. 인물이 조금씩 잡히고, 그들의 고민과 직업적 동경, 배경에서 나오는 맥락이 이해되기 시작하자 작가의 묘사가 “대단하다”로 바뀌었다. 또 한 사람은 이렇게 말했다.</p>
+
+    <p class="voice"><span class="q">“</span>롯데 독서토론을 하면서, 1페이지부터 끝까지 단 한 페이지도 안 놓치고 다 읽은 책은 이게 처음이에요.<span class="q">”</span></p>
+
+    <div class="subhead">번역과 편집에 대한 아쉬움</div>
+    <p>이해를 방해한 요소로 번역과 편집도 도마에 올랐다. 문단이 바뀌는 지점에 말줄임표(…)가 찍혀 있다는 걸 뒤늦게 알아챈 사람은 “배경이나 장면이 바뀌는 걸 알려주는 안내가 조금만 더 있었다면 훨씬 수월했을 것”이라 했다. 네덜란드인 하스가 총에 맞는 대목을 두고는 “자기가 쏜 총에 자기가 맞았다는 건지, 모리송이 쏜 건지” 앞뒤가 안 맞는다는 지적이 나와 한참 갑론을박이 오갔다. 결론은 “번역이 조금 더 좋았으면 싶지만, 번역만으로 해결될 수준의 책은 아니었던 것 같다”였다.</p>
+  </div>
+</article>
+
+<div class="pull reveal"><p>“훌륭한 책이다. <span class="em">단지 친절하지 않았을 뿐이다.</span>”</p></div>
+
+<div class="rule reveal">
+  <svg viewBox="0 0 720 26" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="0" y1="18" x2="292" y2="18" stroke="#A96E1F" stroke-width="1"/>
+    <g transform="translate(300,0)" fill="#A96E1F">
+      <path d="M0,20 C-1.5,13 3,8 11,7 C15,3 24,3 28,7 C36,8 40,13 39,19 L36,20 L35,14 C34,18 32,19 30,20 L28,14 C27,19 25,20 23,20 L23,14 L21,20 L14,20 L14,14 L12,20 L8,20 L7,15 C5,18 2,19 0,20 Z M39,12 C43,11 45,15 42,18 C41,16 40,15 38,16 Z"/>
+    </g>
+    <line x1="428" y1="18" x2="720" y2="18" stroke="#A96E1F" stroke-width="1"/>
+  </svg>
+</div>
+
+<!-- ===================== SECTION 2 ===================== -->
+<article class="sec reveal">
+  <div class="sec__head">
+    <p class="kicker"><b>Part 02</b> <span>문장과 필력</span></p>
+    <h2 class="sec__title">이 문장에 <span class="accent">밑줄을 그었다</span> — 자연, 그리고 작가의 필력</h2>
+  </div>
+  <div class="wrap prose">
+    <p>고통을 이야기한 뒤에도, 모두가 앞다투어 꺼낸 것은 “좋았던 대목”이었다. 그 중심에는 아프리카의 자연이 있었다. 풍경을 묘사하는 문장들 앞에서는 다들 속도를 늦추고 <em>찬찬히</em> 읽었다고 했다.</p>
+
+    <p class="voice"><span class="q">“</span>이런 것들을 내가 실제 자연 앞에서 느낄 수 있을까? 느낀다 해도 이렇게 묘사하고 표현할 수 있을까? 그런 생각에 그 부분만큼은 아껴 읽었어요.<span class="q">”</span></p>
+
+    <figure class="mark">
+      <blockquote>“아침에 창문을 열고 로공 강가 모래톱에 선 수천 마리의 새떼를 보면 행복해요. 그 이상 전 바라지도 않아요.”</blockquote>
+      <figcaption>— 미나의 눈으로 본 자연. 여러 사람이 나란히 접어 둔 페이지였다.</figcaption>
+    </figure>
+
+    <p>미나의 눈으로 본 자연이 있고, 전지적 시점으로 펼쳐지는 자연이 있었다. 같은 풍경이 시점에 따라 다르게 다가온다는 점을 여럿이 짚었다. 사막을 묘사한 한 문장 — “사막에서는 다른 어느 곳보다 친구가 필요하다는 것을 늘 느낀다”는 대목 — 을 “이 책에서 제일 마음에 든 문장”으로 꼽은 사람도 있었다. 온 세상을 뒤덮은 듯한 하늘과 거의 육체적인 관계를 맺고 있기 때문이라는, 그 광막하고 척박한 정서를 “딱 캡처해낸” 표현이라고 했다.</p>
+
+    <div class="subhead">인물 하나에 두세 페이지, 그 묘사의 깊이</div>
+    <p>작가의 필력은 인물 묘사에서 정점을 찍었다. 한 사람은 이렇게 감탄했다. 우리 같으면 “쟤는 성격이 급하다”, “남 얘기를 잘 안 듣는다” 정도로 한두 줄에 끝낼 것을, 이 작가는 <em>두세 페이지에 걸쳐</em> 그려낸다는 것이다.</p>
+
+    <p class="voice"><span class="q">“</span>설명이 워낙 기니까 읽고 나면 머리에 잘 안 남기도 해요. 그런데 그 설명의 깊이와 넓이가… 진짜 대단하다, 그런 생각이 들었어요.<span class="q">”</span></p>
+
+    <p>한국 작가들에게서 흔히 접하는 서술과는 결이 확연히 달라서, 그 차이 하나만으로도 큰 인상을 받았다는 평도 있었다. “있는 그대로의 책임을 다한 문장”이라는 말도 나왔다.</p>
+  </div>
+</article>
+
+<!-- ===================== SECTION 3 ===================== -->
+<article class="sec reveal">
+  <div class="sec__head">
+    <p class="kicker"><b>Part 03</b> <span>상징과 제목</span></p>
+    <h2 class="sec__title">코끼리, 그리고 <span class="accent">‘나의 뿌리’</span></h2>
+  </div>
+  <div class="wrap prose">
+    <p>이야기를 끌고 가는 축은 결국 코끼리였다. 한 사람은 읽는 내내 인물을 두 진영으로 나눠 따라갔다고 했다 — 코끼리를 지키려는 사람, 그리고 코끼리를 이용하는 사람. 그런데 그 구도를 붙잡고 가다 보면 질문이 어느새 안쪽으로 방향을 튼다. <em>그래서, 나의 코끼리는 무엇인가?</em></p>
+
+    <p>텍스트만 놓고 보면 이 소설이 지키려는 건 ‘자연’인 것 같다. 자연인가 존엄성인가 인간성인가, 이름을 바꿔가며 나오지만 어쨌든 주인공이 이토록 지키고 싶어 하는 무언가가 있다. 그리고 그 질문은 곧 독자 각자에게로 되돌아온다.</p>
+
+    <p class="voice"><span class="q">“</span>최근에 들은 강의의 주인공이 10년 동안 둔촌 주공 아파트를 기록한 사람이었어요. 왜 직장까지 그만두고 그랬냐고 물으니, ‘그렇지 않고서는 견딜 수 없을 것 같아서’라고 하더라고요. 아, 어떤 사람에겐 그런 게 있구나 — 그렇게 생각하며 읽었습니다.<span class="q">”</span></p>
+
+    <p>그 ‘견딜 수 없어서 지키는 것’이 바로 각자의 하늘의 뿌리가 아니겠느냐는 해석으로 이어졌다. 누군가의 마음속에는 반드시 지키고 싶은 무언가가 있고, 그건 이익도 명분도 아닌 “그냥 나는 그걸 지키는 거야”에 가깝다는 것.</p>
+
+    <div class="subhead">왜 하필 ‘하늘의’ 뿌리인가</div>
+    <p>제목을 두고도 오래 붙들었다. “생명의 뿌리, 자연의 뿌리라 해도 됐을 텐데 왜 하늘의 뿌리일까.” 한 사람은 옮긴이의 해설을 읽고서야 안개가 걷혔다고 했다. 인간의 존엄성이란 하늘이 우리에게 준 자유·권리 같은 것이고, 그것이 코끼리라는 형상으로, ‘지키고 싶은 것’으로 표현됐다는 풀이였다. 옮긴이의 말은 이렇게 정리한다 — 모렐이 코끼리라는 이름으로 구원하려는 것은 오히려 인간이며, 인간의 존엄이라고. 진보라는 허울 아래 학살되는, 뒤집혀 버둥거리는 그 존재야말로 <em>멸종 위기에 놓인 인간</em>이라고.</p>
+
+    <div class="subhead">코끼리라는 모티브</div>
+    <p>코끼리가 인류에게 주는 특별한 상징성도 화제였다. 온순하고 덩치 크고 무던해 보이지만 알고 보면 지능도 높고 용맹한 동물. “코끼리를 냉장고에 넣는 법”이나 경영학의 ‘보이지 않는 코끼리’, 마케팅에서 말하는 코끼리까지 소환됐다. 예전 독서토론에서 함께 읽었던 조지 오웰의 「코끼리를 쏘다」와 이 책의 연관성을 붙들고 고민하다 실패했다는 고백도 있었다. 식민주의 비판이라는 공통분모는 어렴풋이 보이지만, 그걸 이 책에 그대로 포개기엔 “내 수준을 벗어난 이야기”라며 웃었다.</p>
+  </div>
+</article>
+
+<div class="pull reveal"><p>모렐에겐 모렐의, 바이타리에겐 바이타리의 —<br><span class="em">저마다의 하늘의 뿌리가 있다.</span></p></div>
+
+<!-- ===================== SECTION 4 ===================== -->
+<article class="sec reveal">
+  <div class="sec__head">
+    <p class="kicker"><b>Part 04</b> <span>시대와 사상</span></p>
+    <h2 class="sec__title">1956년의 목소리 — <span class="accent">식민지 · 전후 · 생태주의</span></h2>
+  </div>
+  <div class="wrap prose">
+    <p>이 책이 “인식의 지평을 넓혀 줬다”는 평이 여럿이었다. 평생 한 번도 경험해 보지 못한 제3세계 — 그 사회와 문화와 사고를 처음 들여다봤다는 것. 특히 아프리카의 정치 상황이 흥미로운 대목으로 꼽혔다.</p>
+
+    <p>바이타리라는 인물이 그 통로였다. 차드에서 태어나 프랑스에서 지식인이 되고, 다시 돌아와 민족주의자 진영에 선 궤적. 한 사람은 이 대목에서 간디를 떠올렸다.</p>
+
+    <p class="voice"><span class="q">“</span>저는 간디가 영국 변호사였는지도 몰랐어요. 영국에서 변호사가 되어 남아공에서 일하다 돌아와 민족주의자가 됐잖아요. 우리로 치면 이승만 같은 사람이고 — 나라마다 서사가 놀랄 만큼 비슷하더라고요.<span class="q">”</span></p>
+
+    <p>찾아보니 차드는 독립 이후 30년 독재를 겪었고 지금도 그 구조가 이어진다. 다른 나라와 달리 지금도 부족 사회로 유지된다는 점이 유독 낯설게 다가왔다. 그러면서 자연스럽게 “이 책이 몇 년도에 나왔는가”를 계속 의식하게 됐다는 것. 1956년 출간, 차드 독립은 1960년. 2차 대전을 통과한 프랑스 지식인이 쓴 책이라면 “이럴 수 있겠구나” 싶은 것들이 있었다.</p>
+
+    <div class="subhead">이성에 대한 불신, 그리고 자연이라는 대안</div>
+    <p>전쟁을 직접 겪은 작가는 그 이전 시대가 떠받들던 합리주의와 인간 이성을 비판한다. 민족주의조차 예외가 아니다. 본질과 비본질로 나눈다면, 1·2차 대전을 통과하며 이전 시대가 소중히 여긴 가치들을 전부 ‘비본질’의 자리로 밀어내고 그 위에 자연·존엄성·생태·인간성을 새로 올려놓았다는 것. 이 책을 “첫 번째 생태주의 소설”로 부르는 근거가 여기 있다는 해석이 나왔다.</p>
+
+    <p class="voice"><span class="q">“</span>인간의 역사가 만들어 온 건 다 모순이고, 그걸로는 아무것도 극복할 수 없다 — 이 사람은 그렇게 본 것 같아요. 심지어 마르크스주의도 예외가 아니었고요.<span class="q">”</span></p>
+
+    <p>민주화 운동을 하다 생명사상으로 옮겨간 장일순 선생이 소환됐다. 그렇게 방향을 틀면 기존 진영에선 ‘변절’이라는 딱지를 붙이기도 한다는 것. 그러면 남는 질문은 이것이다. 자연은 과연 그 대안이 될 수 있는가. 모렐은 이상주의자이고, 그 이상의 핵심 코어에 자연을 두고 있다. 그렇다면 우리도 온갖 이념과 철학을 배운 끝에 “나의 가치관은 무엇인가”를 물을 때, <em>결국은 자연으로 귀결되는 것일까.</em></p>
+
+    <figure class="mark">
+      <blockquote>“살아 있는 모든 뿌리들 — 다양성과 생명력이 저마다 다른 뿌리들은, 휴식도 휴전도 없이 보호되어야만 한다.”</blockquote>
+      <figcaption>— 인간의 손바닥만 한 차원으로 축소될 때, 그것은 ‘존엄성의 욕구’가 된다고 책은 말한다.</figcaption>
+    </figure>
+
+    <p>“인간과 더불어 인간적인 이상을 옹호하려는” 그 시도 자체가 모순이며, 지금껏 그 모순을 해결한 사람은 단 한 명도 없었다 — 소설 속 누군가의 입을 빌린 이 비관적 매듭을 두고, “그럼에도 노력하는 사람들이 나타난다”는 데 작가의 시선이 있다는 해석이 오갔다.</p>
+  </div>
+</article>
+
+<div class="rule reveal">
+  <svg viewBox="0 0 720 26" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="0" y1="18" x2="292" y2="18" stroke="#A96E1F" stroke-width="1"/>
+    <g transform="translate(300,0)" fill="#A96E1F">
+      <path d="M0,20 C-1.5,13 3,8 11,7 C15,3 24,3 28,7 C36,8 40,13 39,19 L36,20 L35,14 C34,18 32,19 30,20 L28,14 C27,19 25,20 23,20 L23,14 L21,20 L14,20 L14,14 L12,20 L8,20 L7,15 C5,18 2,19 0,20 Z M39,12 C43,11 45,15 42,18 C41,16 40,15 38,16 Z"/>
+    </g>
+    <line x1="428" y1="18" x2="720" y2="18" stroke="#A96E1F" stroke-width="1"/>
+  </svg>
+</div>
+
+<!-- ===================== SECTION 5 ===================== -->
+<article class="sec reveal">
+  <div class="sec__head">
+    <p class="kicker"><b>Part 05</b> <span>인물 읽기</span></p>
+    <h2 class="sec__title">본질과 명분 사이 — <span class="accent">인물들을 읽다</span></h2>
+  </div>
+  <div class="wrap prose">
+    <p>한 사람은 토론 끝에 이 책을 이렇게 한 줄로 정의했다. <em>코끼리를 매개로 한 인간 군상에 대한 풍자.</em> 더 밀어붙이면 “본질과, 본질을 가장한 명분의 대립 구조”라는 것. 누군가의 마음속에는 정말 바보처럼 순수하게 지키고 싶은 ‘그것(본질)’이 있고, 다른 누군가는 이익이나 다른 명분으로 그것을 살짝 포장해 이용한다. 이를 “현실주의와 이상주의의 대립”으로 바꿔 부른 사람도 있었다.</p>
+
+    <div class="cards">
+      <div class="card"><h4>모렐</h4><p>이상주의자. 오로지 코끼리에만 집중한다. 특정한 정치적·사회적 목적이 있는 사람이 아니라, 지켜야 할 ‘가치’ 그 자체를 품은 인물.</p></div>
+      <div class="card"><h4>바이타리</h4><p>차드 출신의 프랑스 지식인, 민족주의 진영. 식민지를 벗어나 제 민족이 더 나은 삶을 살길 바라는, 그만의 뚜렷한 가치를 지녔다.</p></div>
+    </div>
+
+    <p style="margin-top:1.4rem">이 둘의 충돌이 서사의 가장 큰 축이다. 3부에서 함께 무언가를 할 듯하다가, 바이타리가 사람을 시켜 코끼리를 다 잡아 죽이게 하는 장면 — “이 책에서 서사로 들어오는 가장 큰 사건”이라 한 사람은 “깜짝 놀랐다”고 했다. 다만 그것을 ‘착한 모렐 대 나쁜 바이타리’로 읽지는 않았다는 데 목소리가 모였다.</p>
+
+    <p class="voice"><span class="q">“</span>모렐에겐 모렐의 가치가, 바이타리에겐 바이타리의 가치가, 코끼리를 잡아 식용하는 원주민에겐 또 그들의 가치가 있어요. 위선적인 사람은 하나도 없고, 다만 인간 군상이 이토록 다양하다는 걸 보여준 거죠. 이렇게 읽어도 무방하다고 생각했어요.<span class="q">”</span></p>
+
+    <p>반대편에선 다른 결의 해석도 나왔다. “어쩌면 모렐은 없는 것 아닐까 — 사람들이 저마다 모렐을 만들어 내서 적당히 활용하는 것 아닐까.” 정작 모렐 본인의 이야기는 별로 없고, 주변 인물들의 이야기가 곁가지로 붙어 서사가 굴러가는 걸 보면 그렇게도 읽힌다는 것이다.</p>
+
+    <div class="subhead">가장 이해할 수 없는 사람, 미나</div>
+    <p>등장인물 중 “제일 멋있는” 인물로 사진작가를 꼽은 사람은, 동시에 “딱 한 사람, 끝내 이해 못 한 인물이 있다”고 했다. 미나였다. 모렐을 그토록 사랑하고 응원하며 함께하면서도, 그 근원적 동력이 어디서 출발했는지가 잡히지 않는다는 것. 자기 삶을 정화하고 싶었던 걸까, 아니면 —</p>
+
+    <p class="voice"><span class="q">“</span>‘베를린에서 온 사람 한 명쯤은 있어야 하지 않냐’는 말이 나오잖아요. 그게 전범 국가로서의 죄책감을 설명하는 배경인가 싶기도 하고.<span class="q">”</span></p>
+
+    <p>자연이 너무 좋다는 마음과, 전후 독일이라는 배경에서 오는 부채감. 두 갈래로 읽히지만 “구체적으로는 끝내 이해가 안 됐다”는 데 여럿이 동의했다. 그런 미나의 입을 빌린 한 문장은 모두를 웃게 했다.</p>
+
+    <figure class="mark">
+      <blockquote>“남자들은 대개 바지를 내렸을 때 잘못을 저지른다고들 하지만 — 정말 나쁜 짓은 바지를 입고 있을 때 저질러진다.”</blockquote>
+      <figcaption>— 때리고 죽이고 학살하는 일은 늘 ‘옷을 갖춰 입은’ 채 벌어진다는, 씁쓸한 유머.</figcaption>
+    </figure>
+
+    <div class="subhead">밥만 같이 먹는 네 사람</div>
+    <p>가장 뜨겁게 오간 장면 하나. 모렐 일행 네댓 명 — 미나, 미군 소령, 덴마크 학자, 그리고 사진작가 필즈 — 은 밥 먹을 때만 함께하고, 그마저 별 대화 없이 각자 처소로 흩어진다. 책은 이들을 “서로 부대끼며 살기를 거절하는 사람들”, 각자 <em>자기 고독의 극치</em>로 들어간 이들이라 묘사한다. 필즈는 그것을 답답해하고, 포사이드는 화를 낸다.</p>
+
+    <p class="voice"><span class="q">“</span>같은 편끼리는 어마어마한 동지 의식이 느껴질 것 같은데, 막상 경쟁자가 없어지면 자기들끼리는 대화를 안 해요. 상대가 있어야 대화가 되는 거죠. 이걸 그냥 받아들여야 하나, 아니면 더 부대끼자고 문제 제기를 해야 하나 — 그런 생각이 들었어요.<span class="q">”</span></p>
+
+    <p>이에 대해선 “애초에 동지적 관계가 아니었다”는 반론이 팽팽했다. 미나는 모렐을 사랑해서, 학자는 생태 조사가 좋아서, 소령은 이유가 불분명한 채로, 각자 다른 출발선에서 우연히 같은 여정에 놓였을 뿐이라는 것. “원팀이긴 하되, 굳이 동지라 부를 만큼 강한 결합은 아닌” — 이른바 외인구단 같은 성격이라는 절충으로 대화가 정리됐다.</p>
+  </div>
+</article>
+
+<!-- ===================== SECTION 6 ===================== -->
+<article class="sec reveal">
+  <div class="sec__head">
+    <p class="kicker"><b>Part 06</b> <span>존엄성</span></p>
+    <h2 class="sec__title">존엄성이라는 <span class="accent">질문</span></h2>
+  </div>
+  <div class="wrap prose">
+    <p>이 책은 ‘존엄성’이라는 말을 자꾸 꺼낸다. 그런데 읽고 나면 오히려 질문이 늘어난다. 이 책이 말하는 존엄성은 무엇인가, 그리고 나에게는 어떤 존엄성이 있는가.</p>
+
+    <p class="voice"><span class="q">“</span>인권선언에선 ‘인간은 존엄하며’라고 하잖아요. 그런데 정작 이 책에 나오는 인간들은 존엄성을 보여주는 인간들이 아니에요. 생태주의는 인간을 넘어 ‘모든 생명이 존엄하다’로 개념을 확장하기도 하는데 — 그 감각이 우리 마음속에 정말 자리 잡고 있는지는 잘 모르겠어요.<span class="q">”</span></p>
+
+    <p>한 사람은 요즘 회자되는 설문을 꺼냈다. 반려견과 모르는 사람이 함께 물에 빠졌을 때 누구를 구하겠느냐 물으면, 백이면 백 반려견을 구한다는 결과가 나온다고. 내 개는 가족이니까. 하필 지금은 AI 때문에 “인간의 존엄성이 사라진다”는 논리까지 나오는 시대다. 그래서 존엄성이라는 화두를 다시 꺼내 이야기해 보고 싶어지는 지점이 분명히 있다는 것.</p>
+
+    <p>철학의 언어도 오갔다. 인간의 존엄이라 하면 가장 먼저 떠오르는 건 칸트 — 인간을 수단이 아닌 목적으로 대하라는 명제. 윤리적으로 대우받을 권리를 타고난다는 것. 여기에 생태주의는 그 존엄의 범위를 생명 전체로 넓힌다.</p>
+
+    <div class="subhead">‘존엄성 알약’이라는 발명</div>
+    <p>가장 기발했던 장치로는 단연 ‘존엄성 알약’이 꼽혔다. 한 사람에게 “인상적인 알약”이란 「매트릭스」의 빨간 약, 밥 대신 먹는 알약이 전부였는데, 여기 세 번째로 강렬한 알약이 추가된 셈이라고. 존엄성을, 없으면 <em>만들어 내서라도</em> 삼켜야 하는 무언가로 그려낸 상상력. 「멋진 신세계」의 알약이 나란히 소환되기도 했다.</p>
+
+    <p class="voice"><span class="q">“</span>‘존엄성이라는 알약을 만들어 내서라도’ 지켜야 한다는 말이 나오잖아요. 좋게 끝낼 수 있었는데도 굳이 이런 문장을 쓴 걸 보면 — 인간의 존엄을 지키는 일이 결코 쉽지 않다는 걸 말하고 싶었던 것 같아요.<span class="q">”</span></p>
+
+    <p>그 배경에는 독일에서 겪은 처참함이 짙게 녹아 있다는 데 여럿이 고개를 끄덕였다. 그러면서도 이 책 이후 프랑스 사회와 문화에 실제로 어떤 영향을 미쳤는지, 이런 생태적·존엄적 메시지가 그 시대에 얼마나 앞선 것이었는지 궁금하다는 물음이 남았다.</p>
+  </div>
+</article>
+
+<div class="pull reveal"><p>“우리는 남는 게 없는 것 같은데도,<br><span class="em">그럼에도 이렇게 오래 대화가 된다.</span>”</p></div>
+
+<!-- ===================== SECTION 7 ===================== -->
+<article class="sec reveal">
+  <div class="sec__head">
+    <p class="kicker"><b>Part 07</b> <span>곁가지, 그러나 오래 남는</span></p>
+    <h2 class="sec__title">대화가 흘러간 <span class="accent">그 밖의 자리들</span></h2>
+  </div>
+  <div class="wrap prose">
+    <div class="subhead">독일 수용소, 그 두 개의 에피소드</div>
+    <p>일부·2부에 반복해 등장하는 독일 수용소 이야기를 두고 “왜 이렇게 자주 나오나” 싶었다는 사람이 3부에 이르러 무릎을 쳤다. 수용소에서 상상의 여인을 곁에 있는 것처럼 대하던 이야기, 풍뎅이를 살리려 애쓰던 에피소드 — 이 무형의 애정이야말로 훗날 코끼리를 보호하려는 마음의 <em>원출발</em>이라는 것. 현실의 문제를 현실적 계산으로 풀기보다, 때로는 외면하기 위해 붙든 ‘무형의 도구’가 도리어 수용소 생활을 더 견딜 만하게 만들었다는 두 개의 사례가 마지막에야 서로 연결됐다.</p>
+
+    <div class="subhead">AI가 할 수 없는 것 — 암묵지</div>
+    <p>토론이 무르익자 화제는 뜻밖에 AI로 옮겨갔다. “이 책은 읽고 나면 손에 또렷이 남는 게 없는 것 같은데, 그럼에도 우리는 이렇게 오래 떠들 수 있다”는 관찰에서 출발했다.</p>
+
+    <p class="voice"><span class="q">“</span>AI에게 정리하라고 하면 다섯이 시켜도 비슷한 결과가 나오겠죠. 그런데 우리는 그 어렴풋한 이미지, 느낌만 가지고도 서로 대화가 돼요. 명확한 단어로 딱 짚어 설명할 순 없지만 ‘아, 이런 방향인가’ 하는 건 사람에게 남거든요.<span class="q">”</span></p>
+
+    <p>이 어렴풋한 공유 자산을 ‘암묵지’라 부를 수 있을지는 모르겠으나, 바로 그런 것을 통해 “우리가 AI에게 점령당하지 않는 우리만의 영역을 계속 만들어 갈 수 있지 않을까”라는 낙관으로 이어졌다.</p>
+
+    <div class="subhead">로맹 가리, 그리고 「자기 앞의 생」</div>
+    <p>작가 로맹 가리에 대한 호기심도 컸다. 이 어려운 책을 계기로 그의 다른 작품 두어 권을 더 찾아 읽었다는 사람이 여럿. 특히 「자기 앞의 생」은 “정말 재미있다, 하나도 걸리지 않고 술술 읽힌다”는 극찬을 받았다. 넷플릭스에 영화도 있지만 “늘 그렇듯 책이 훨씬 낫다”는 첨언과 함께. 흥미롭게도 이 책의 작가는 로맹 가리가 아니라 ‘에밀 아자르’ — 같은 사람이지만 다른 필명이다. 이름을 달리 쓴 덕에 원칙상 한 번뿐인 콩쿠르상을 두 번 받은 일화가 소개됐다.</p>
+
+    <div class="subhead">영화로 만든다면</div>
+    <p>“영화로 만들어도 좋겠다”는 상상도 오갔다. 아프리카의 대지, 부족과 점령 공간의 갈등, 매력적인 여성과 잘생긴 무시마 — 극화할 여지가 충분하다는 것. 실제로 1960년대 헐리우드에서 「천국의 뿌리」라는 제목으로 영화화됐으나 크게 성공하진 못했다는 뒷이야기가 덧붙었다. 강가 모래톱에 앉았다 다시 날아오르는 새떼 장면에선 “아프리카가 사무치게 떠오를 것 같다”는 말이 이어졌다.</p>
+  </div>
+</article>
+
+<!-- ===================== CLOSE ===================== -->
+<section class="close reveal">
+  <div class="close__inner">
+    <p class="kicker"><b>Verdict</b> <span>별점과 남은 말</span></p>
+    <h2>친절하지 않았지만,<br>읽었다는 것만으로 값을 한 책</h2>
+    <p>다섯 사람의 독서 궁합은 저마다 달랐다. 같은 문장을 누구는 한 번에 흡수하고, 누구는 세 번 네 번 읽어도 “하얀 건 종이고 검은 건 글자”였다. 예전 어느 시집을 함께 읽었던 날처럼, 이번에도 이 책은 “각자가 잘 받아들이는 텍스트 구조가 얼마나 다른지”를 새삼 확인시켰다.</p>
+
+    <p class="voice"><span class="q">“</span>진혁이가 이 책을 선정해서 미안하다고 할 필요가 전혀 없을 만큼, 마지막이 정말 좋았어요.<span class="q">”</span></p>
+
+    <p>고통스럽게 시작해 뜻밖의 여운으로 끝난 자리. 손에 또렷이 남는 문장은 많지 않지만, 낯선 자연과 정치, 전후 지식인의 절망, 그리고 “나의 코끼리는 무엇인가”라는 질문 하나만으로도 충분했다는 데 뜻이 모였다. 누군가의 말처럼, 이 작가를 “읽었다는 자체만으로도 충분히 의의가 있다.”</p>
+
+    <div class="rating">
+      <span class="score">3.7</span>
+      <span class="of">/ 5.0 · 대체로 3.5~4점 · 15점 만점 환산 시 “최소 3점은 줄 만한 책”</span>
+    </div>
+  </div>
+</section>
+
+<p class="colophon">하늘의 뿌리 · 로맹 가리 · 독서토론 기록 &nbsp;|&nbsp; 다섯 사람의 목소리로 엮음</p>
+
+<script>
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
